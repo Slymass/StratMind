@@ -29,12 +29,12 @@ jobs:
       - name: Deploy to S3
         run: aws s3 sync frontend/build/ s3://mon-bucket-react-frontend --delete
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AKIAYEKP5EYN3XNHDSE2 }}
-          AWS_SECRET_ACCESS_KEY: ${{ 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 }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID || 'default-access-key-id' }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: "us-east-2"  # Remplace par ta région AWS
 
       - name: Invalidate CloudFront Cache (optionnel)
-        run: aws cloudfront create-invalidation --distribution-id D1234567890ABC --paths "/*"
+        run: aws cloudfront create-invalidation --distribution-id E3JLZGBSSAD4LX --paths "/*"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

@@ -1,0 +1,4 @@
+cloudfront_url = "d169ptee2rvaai.cloudfront.net"
+elastic_beanstalk_url = "awseb-e-8-AWSEBLoa-VZ1256C7BHID-1672643711.us-east-2.elb.amazonaws.com"
+rds_endpoint = "flask-db.ct8ucaiw0dw7.us-east-2.rds.amazonaws.com:5432"
+s3_website_url = "mon-bucket-react-frontend.s3-website.us-east-2.amazonaws.com" 

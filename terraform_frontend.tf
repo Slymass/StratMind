@@ -2,7 +2,7 @@
 
 # 1. Création du bucket S3 pour stocker les fichiers du frontend React
 resource "aws_s3_bucket" "frontend_bucket" {
-  bucket = "mon-bucket-react-frontend"  # Remplace par un nom unique
+  bucket = "stratmind-frontend"  # Remplace par un nom unique
 }
 
 # 2. Suppression des ACLs publiques (AWS les bloque par défaut)
