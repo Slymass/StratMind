@@ -1,0 +1,10 @@
+Terraform
+
+Access key: AKIAYEKP5EYN3LFBKJ6K
+Secret: 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
+
+github_deploy
+
+Access key: AKIAYEKP5EYN3XNHDSE2
+Secret: 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
+
