@@ -4,22 +4,22 @@ from models import db
 
 users_routes = Blueprint("users", __name__)
 
-# Route pour récupérer tous les utilisateurs (GET /api/users)
-@users_routes.route("/", methods=["GET"])
+# Récupérer tous les utilisateurs
+@users_routes.route("/users", methods=["GET"])
 def get_users():
     users = User.query.all()
     return jsonify([{"id": user.id, "username": user.username, "email": user.email} for user in users])
 
-# Route pour récupérer un utilisateur par son ID (GET /api/users/<id>)
-@users_routes.route("/<int:user_id>", methods=["GET"])
+# Récupérer un utilisateur par ID
+@users_routes.route("/users/<int:user_id>", methods=["GET"])
 def get_user(user_id):
     user = User.query.get(user_id)
     if user:
         return jsonify({"id": user.id, "username": user.username, "email": user.email})
     return jsonify({"error": "Utilisateur non trouvé"}), 404
 
-# Route pour ajouter un nouvel utilisateur (POST /api/users)
-@users_routes.route("/", methods=["POST"])
+# Créer un nouvel utilisateur
+@users_routes.route("/users", methods=["POST"])
 def create_user():
     data = request.json
     if not data.get("username") or not data.get("email"):
@@ -29,10 +29,13 @@ def create_user():
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify({"message": "Utilisateur créé", "user": {"id": new_user.id, "username": new_user.username, "email": new_user.email}}), 201
+    return jsonify({
+        "message": "Utilisateur créé",
+        "user": {"id": new_user.id, "username": new_user.username, "email": new_user.email}
+    }), 201
 
-# Route pour modifier un utilisateur existant (PUT /api/users/<id>)
-@users_routes.route("/<int:user_id>", methods=["PUT"])
+# Mettre à jour un utilisateur
+@users_routes.route("/users/<int:user_id>", methods=["PUT"])
 def update_user(user_id):
     user = User.query.get(user_id)
     if not user:
@@ -44,10 +47,13 @@ def update_user(user_id):
 
     db.session.commit()
 
-    return jsonify({"message": "Utilisateur mis à jour", "user": {"id": user.id, "username": user.username, "email": user.email}})
+    return jsonify({
+        "message": "Utilisateur mis à jour",
+        "user": {"id": user.id, "username": user.username, "email": user.email}
+    })
 
-# Route pour supprimer un utilisateur (DELETE /api/users/<id>)
-@users_routes.route("/<int:user_id>", methods=["DELETE"])
+# Supprimer un utilisateur
+@users_routes.route("/users/<int:user_id>", methods=["DELETE"])
 def delete_user(user_id):
     user = User.query.get(user_id)
     if not user:
