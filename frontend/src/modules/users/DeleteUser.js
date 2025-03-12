@@ -1,13 +1,13 @@
 // src/modules/users/DeleteUser.js
 import React, { useState } from "react";
-import { fetchData } from "../../services/apiServices"; // Utilisation de la fonction générique
+import { deleteData } from "../../services/apiServices"; // Import de la fonction de suppression
 
 function DeleteUser({ userId }) {
   const [message, setMessage] = useState("");
 
   const handleDelete = async () => {
     try {
-      await deleteUser(userId); // Appeler la fonction de suppression
+      await deleteData(`/users/${userId}`); // Utilisation de la fonction deleteData pour supprimer l'utilisateur
       setMessage("Utilisateur supprimé");
     } catch (error) {
       setMessage("Erreur lors de la suppression de l'utilisateur.");
