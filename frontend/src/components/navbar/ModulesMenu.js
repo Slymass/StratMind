@@ -6,9 +6,19 @@ function ModulesMenu() {
 
   return (
     <div>
+      {/* Nouveau lien avec une marge en bas */}
+      <div className="mt-2 space-y-2 mb-4">
+      <Link
+        to="/Accueil"
+        className="w-full text-left bg-blue-500 hover:bg-blue-400 px-4 py-2 rounded transition mb-4"
+      >
+        Accueil
+      </Link>
+      </div>
+
       {/* Bouton Modules */}
       <button
-        className="w-full text-left bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded transition"
+        className="w-full text-left bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded transition mb-4"
         onClick={() => setIsOpen(!isOpen)}
       >
         Modules
