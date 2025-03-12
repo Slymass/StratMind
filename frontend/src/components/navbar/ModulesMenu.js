@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";  // On importe Link pour la navigation
 
 function ModulesMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,9 +17,9 @@ function ModulesMenu() {
       {/* Sous-menu */}
       {isOpen && (
         <div className="mt-2 space-y-2">
-          <button className="block w-full text-left bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded transition">
-            Module 1
-          </button>
+          <Link to="/users" className="block w-full text-left bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded transition">
+            Utilisateurs
+          </Link>
           <button className="block w-full text-left bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded transition">
             Module 2
           </button>
